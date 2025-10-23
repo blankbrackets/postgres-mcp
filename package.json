@@ -1,6 +1,6 @@
 {
   "name": "blankbrackets-postgres-mcp-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Model Context Protocol server for AI-assisted PostgreSQL database analysis and optimization. Provides read-only access for comprehensive performance analysis, index optimization, and schema recommendations.",
   "main": "build/index.js",
   "module": "src/index.ts",
