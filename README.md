@@ -2,7 +2,6 @@
 
 > A TypeScript-based Model Context Protocol (MCP) server that provides AI assistants with read-only access to PostgreSQL databases for comprehensive analysis and optimization recommendations.
 
-[![Smithery](https://img.shields.io/badge/Smithery-@blankbrackets/postgres--mcp-purple)](https://smithery.ai/server/@blankbrackets/postgres-mcp)
 [![NPM Version](https://img.shields.io/npm/v/blankbrackets-postgres-mcp-server)](https://www.npmjs.com/package/blankbrackets-postgres-mcp-server)
 [![Docker Pulls](https://img.shields.io/docker/pulls/blankbrackets/postgres-mcp-server)](https://hub.docker.com/r/blankbrackets/postgres-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,15 +10,7 @@
 
 ## Installation
 
-### Smithery (Easiest - Recommended)
-
-```bash
-npx @smithery/cli install @blankbrackets/postgres-mcp
-```
-
-**Registry**: [@blankbrackets/postgres-mcp](https://smithery.ai/server/@blankbrackets/postgres-mcp)
-
-### NPM
+### NPM (Recommended)
 
 ```bash
 npm install -g blankbrackets-postgres-mcp-server
@@ -34,6 +25,14 @@ docker pull blankbrackets/postgres-mcp-server:latest
 ```
 
 **Image**: [blankbrackets/postgres-mcp-server](https://hub.docker.com/r/blankbrackets/postgres-mcp-server)
+
+### From Source
+
+```bash
+git clone https://github.com/blankbrackets/postgres-mcp.git
+cd postgres-mcp
+npm install && npm run build
+```
 
 ## Features
 
@@ -469,13 +468,13 @@ docker run -i \
 
 See [`docs/DOCKER.md`](docs/DOCKER.md) for comprehensive Docker documentation.
 
-## Published Registries ✅
+## Published Packages ✅
 
-This server is now available on:
+This server is available on:
 
-- ✅ **Smithery MCP Registry** - `@blankbrackets/postgres-mcp` ([View on Smithery](https://smithery.ai/server/@blankbrackets/postgres-mcp))
 - ✅ **NPM Registry** - `blankbrackets-postgres-mcp-server` ([View on NPM](https://www.npmjs.com/package/blankbrackets-postgres-mcp-server))
 - ✅ **Docker Hub** - `blankbrackets/postgres-mcp-server` ([View on Docker Hub](https://hub.docker.com/r/blankbrackets/postgres-mcp-server))
+- ✅ **GitHub** - Source code and releases ([View on GitHub](https://github.com/blankbrackets/postgres-mcp))
 
 ## Contributing
 

@@ -13,9 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 **Docker Image**: https://hub.docker.com/r/blankbrackets/postgres-mcp-server  
 **Docker Pull**: `docker pull blankbrackets/postgres-mcp-server:latest`
 
-**Smithery Registry**: `@blankbrackets/postgres-mcp` ✅ Registered  
-**Smithery Install**: `npx @smithery/cli install @blankbrackets/postgres-mcp`
-
 ### Changed
 
 - Added `module` field to package.json for Smithery compatibility
