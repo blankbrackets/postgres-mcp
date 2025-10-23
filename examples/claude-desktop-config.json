@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "postgres-analyzer": {
+      "command": "node",
+      "args": ["/absolute/path/to/postgres-mcp/build/index.js"],
+      "env": {
+        "DATABASE_URL": "postgresql://readonly_user:password@127.0.0.1:5432/your_database",
+        "LOG_LEVEL": "info"
+      }
+    }
+  }
+}
+

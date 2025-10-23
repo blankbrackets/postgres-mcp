@@ -1,9 +1,12 @@
 {
   "name": "postgres-mcp-server",
   "version": "1.0.0",
-  "description": "MCP server for read-only Postgres database analysis and optimization suggestions",
+  "description": "Model Context Protocol server for AI-assisted PostgreSQL database analysis and optimization. Provides read-only access for comprehensive performance analysis, index optimization, and schema recommendations.",
   "main": "build/index.js",
   "type": "module",
+  "bin": {
+    "postgres-mcp": "build/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node build/index.js",
@@ -12,13 +15,31 @@
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "postgres",
+    "postgresql",
     "database",
     "analysis",
-    "optimization"
+    "optimization",
+    "performance",
+    "ai",
+    "llm",
+    "claude",
+    "cursor",
+    "database-optimization",
+    "index-optimization",
+    "query-analysis"
   ],
-  "author": "",
+  "author": "Postgres MCP Server Contributors",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blankbrackets/postgres-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blankbrackets/postgres-mcp/issues"
+  },
+  "homepage": "https://github.com/blankbrackets/postgres-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
     "pg": "^8.13.1",
