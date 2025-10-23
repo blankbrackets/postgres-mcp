@@ -1,7 +1,11 @@
 # Smithery MCP Registry Configuration
 # https://smithery.ai
 
-runtime: typescript
+# Use pre-built NPM package (not Smithery build)
+commands:
+  - npx
+  - blankbrackets-postgres-mcp-server
+
 description: Read-only PostgreSQL database analysis and optimization server for AI assistants. Provides comprehensive performance analysis, index optimization, and schema recommendations.
 
 # Environment variables as simple strings
