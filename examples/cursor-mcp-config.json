@@ -1,12 +1,13 @@
 {
   "mcpServers": {
     "postgres-analyzer": {
-      "command": "node",
-      "args": ["/absolute/path/to/postgres-mcp/build/index.js"],
+      "comment": "Using globally installed NPM package (install with: npm install -g blankbrackets-postgres-mcp-server)",
+      "command": "blankbrackets-postgres-mcp-server",
       "env": {
-        "DATABASE_URL": "postgresql://readonly_user:password@localhost:5432/your_database"
+        "DATABASE_URL": "postgresql://readonly_user:password@127.0.0.1:5432/your_database"
       }
     }
   }
 }
+
 

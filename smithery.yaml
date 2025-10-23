@@ -1,0 +1,89 @@
+# Smithery MCP Registry Configuration
+# https://smithery.ai
+
+name: blankbrackets-postgres-mcp-server
+displayName: Postgres MCP Server
+description: Read-only PostgreSQL database analysis and optimization server for AI assistants. Provides comprehensive performance analysis, index optimization, and schema recommendations.
+version: 1.0.0
+author: blankbrackets
+license: MIT
+repository: https://github.com/blankbrackets/postgres-mcp
+
+# Server type and runtime
+runtime: node
+transport: stdio
+
+# Installation
+install:
+  npm:
+    package: blankbrackets-postgres-mcp-server
+    
+# Configuration
+config:
+  required:
+    - DATABASE_URL
+  optional:
+    - LOG_LEVEL
+    - QUERY_TIMEOUT
+    
+# Environment schema
+env:
+  DATABASE_URL:
+    description: PostgreSQL connection string (e.g., postgresql://user:password@host:port/database)
+    required: true
+    type: string
+  LOG_LEVEL:
+    description: Logging level (error, warn, info, debug)
+    required: false
+    type: string
+    default: info
+  QUERY_TIMEOUT:
+    description: Query timeout in milliseconds
+    required: false
+    type: number
+    default: 30000
+
+# Capabilities
+capabilities:
+  tools: true
+  resources: true
+  prompts: false
+
+# Tags for discovery
+tags:
+  - database
+  - postgresql
+  - postgres
+  - performance
+  - optimization
+  - analysis
+  - read-only
+  - sql
+  - indexing
+  - query-analysis
+
+# Categories
+categories:
+  - Database
+  - Analytics
+  - Performance
+
+# Security notes
+security:
+  readOnly: true
+  requiresCredentials: true
+  notes: |
+    This server operates in strict read-only mode. Database connections are 
+    enforced as read-only at the connection level. A read-only PostgreSQL user 
+    is strongly recommended.
+
+# Documentation
+homepage: https://github.com/blankbrackets/postgres-mcp
+documentation: https://github.com/blankbrackets/postgres-mcp/tree/main/docs
+examples: https://github.com/blankbrackets/postgres-mcp/tree/main/examples
+
+# Support
+support:
+  issues: https://github.com/blankbrackets/postgres-mcp/issues
+  discussions: https://github.com/blankbrackets/postgres-mcp/discussions
+

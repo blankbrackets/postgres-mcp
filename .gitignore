@@ -9,6 +9,9 @@ dist/
 .env
 .env.local
 
+# Docs
+docs/REGISTRY_SUBMISSION.md
+
 # Logs
 logs/
 *.log

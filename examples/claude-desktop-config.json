@@ -1,13 +1,22 @@
 {
   "mcpServers": {
     "postgres-analyzer": {
-      "command": "node",
-      "args": ["/absolute/path/to/postgres-mcp/build/index.js"],
+      "comment": "Option 1: Using globally installed NPM package (recommended)",
+      "command": "blankbrackets-postgres-mcp-server",
       "env": {
         "DATABASE_URL": "postgresql://readonly_user:password@127.0.0.1:5432/your_database",
         "LOG_LEVEL": "info"
       }
+    },
+    "postgres-analyzer-local": {
+      "comment": "Option 2: Using locally built version (for development)",
+      "command": "node",
+      "args": ["/absolute/path/to/postgres-mcp/build/index.js"],
+      "env": {
+        "DATABASE_URL": "postgresql://readonly_user:password@127.0.0.1:5432/your_database"
+      }
     }
   }
 }
+
 

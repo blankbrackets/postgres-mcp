@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  postgres-mcp:
+    build: ..
+    container_name: postgres-mcp-server
+    environment:
+      # Replace with your actual database connection string
+      DATABASE_URL: postgresql://readonly_user:password@host.docker.internal:5432/your_database
+      LOG_LEVEL: info
+      QUERY_TIMEOUT: 30000
+    volumes:
+      # Mount logs directory for persistent logging
+      - ../logs:/app/logs
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      - mcp-network
+
+  # Example PostgreSQL database (optional - for testing)
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-test
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - mcp-network
+
+volumes:
+  postgres-data:
+
+networks:
+  mcp-network:
+    driver: bridge
+

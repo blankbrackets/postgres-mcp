@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-10-23
+## [1.0.0] - 2025-10-23 ✅ Published
+
+**NPM Package**: https://www.npmjs.com/package/blankbrackets-postgres-mcp-server  
+**Installation**: `npm install -g blankbrackets-postgres-mcp-server`
+
+**Docker Image**: https://hub.docker.com/r/blankbrackets/postgres-mcp-server  
+**Docker Pull**: `docker pull blankbrackets/postgres-mcp-server:latest`
 
 ### Added
 

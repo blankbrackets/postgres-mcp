@@ -2,9 +2,29 @@
 
 > A TypeScript-based Model Context Protocol (MCP) server that provides AI assistants with read-only access to PostgreSQL databases for comprehensive analysis and optimization recommendations.
 
+[![NPM Version](https://img.shields.io/npm/v/blankbrackets-postgres-mcp-server)](https://www.npmjs.com/package/blankbrackets-postgres-mcp-server)
+[![Docker Pulls](https://img.shields.io/docker/pulls/blankbrackets/postgres-mcp-server)](https://hub.docker.com/r/blankbrackets/postgres-mcp-server)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![Node](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+
+## Installation
+
+### NPM (Recommended)
+
+```bash
+npm install -g blankbrackets-postgres-mcp-server
+```
+
+**Package**: [blankbrackets-postgres-mcp-server](https://www.npmjs.com/package/blankbrackets-postgres-mcp-server)
+
+### Docker
+
+```bash
+docker pull blankbrackets/postgres-mcp-server:latest
+```
+
+**Image**: [blankbrackets/postgres-mcp-server](https://hub.docker.com/r/blankbrackets/postgres-mcp-server)
 
 ## Features
 
@@ -25,24 +45,95 @@
 
 ## Quick Start
 
-### 1. Installation
+### Option 1: NPM (Easiest)
+
+Install the published package globally:
 
 ```bash
-npm install
-npm run build
+npm install -g blankbrackets-postgres-mcp-server
 ```
 
-### 2. Configuration
+Then configure in Claude Desktop:
 
-Create a `.env` file or configure via MCP client:
+```json
+{
+  "mcpServers": {
+    "postgres-analyzer": {
+      "command": "blankbrackets-postgres-mcp-server",
+      "env": {
+        "DATABASE_URL": "postgresql://readonly_user:password@127.0.0.1:5432/your_db"
+      }
+    }
+  }
+}
+```
 
+Restart Claude Desktop and start analyzing!
+
+### Option 2: Docker
+
+```bash
+# Build the image
+docker build -t postgres-mcp-server .
+
+# Run with your database
+docker run -i \
+  -e DATABASE_URL="postgresql://readonly_user:password@host.docker.internal:5432/your_db" \
+  -v $(pwd)/logs:/app/logs \
+  postgres-mcp-server
+```
+
+See [`docs/DOCKER.md`](docs/DOCKER.md) for detailed Docker instructions.
+
+### Option 3: From Source
+
+```bash
+# Clone the repository
+git clone https://github.com/blankbrackets/postgres-mcp.git
+cd postgres-mcp
+
+# Install dependencies
+npm install
+
+# Build
+npm run build
+
+# Configure
+cp env.example .env
+# Edit .env with your DATABASE_URL
+
+# Run
+npm start
+```
+
+### Configuration
+
+**Environment Variables:**
 ```bash
 DATABASE_URL=postgresql://readonly_user:password@127.0.0.1:5432/your_database
+LOG_LEVEL=info              # Optional: error, warn, info, debug
+QUERY_TIMEOUT=30000         # Optional: Query timeout in ms
 ```
 
-### 3. Integration
+### Integration with AI Assistants
 
 **Claude Desktop** (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+
+**Using NPM package** (recommended after `npm install -g blankbrackets-postgres-mcp-server`):
+```json
+{
+  "mcpServers": {
+    "postgres-analyzer": {
+      "command": "blankbrackets-postgres-mcp-server",
+      "env": {
+        "DATABASE_URL": "postgresql://readonly_user:password@127.0.0.1:5432/your_database"
+      }
+    }
+  }
+}
+```
+
+**Using local build** (for development):
 ```json
 {
   "mcpServers": {
@@ -57,7 +148,7 @@ DATABASE_URL=postgresql://readonly_user:password@127.0.0.1:5432/your_database
 }
 ```
 
-See [`examples/`](examples/) for more configuration examples.
+See [`examples/`](examples/) for more configuration examples including Cursor and Docker.
 
 ### 4. Usage
 
@@ -326,6 +417,59 @@ The server queries PostgreSQL system tables like:
 
 **Important**: Column names vary between views. See [`docs/POSTGRESQL_REFERENCE.md`](docs/POSTGRESQL_REFERENCE.md).
 
+## Docker Support
+
+### Using Docker
+
+```bash
+# Build
+docker build -t postgres-mcp-server .
+
+# Run
+docker run -i \
+  -e DATABASE_URL="postgresql://user:pass@host.docker.internal:5432/db" \
+  postgres-mcp-server
+```
+
+### Using with Docker Compose
+
+See [`examples/docker-compose.yml`](examples/docker-compose.yml):
+
+```bash
+docker-compose -f examples/docker-compose.yml up
+```
+
+### Docker Hub ✅ Published
+
+Pre-built multi-architecture images available:
+
+```bash
+# Pull latest version
+docker pull blankbrackets/postgres-mcp-server:latest
+
+# Or specific version
+docker pull blankbrackets/postgres-mcp-server:1.0.0
+
+# Run directly
+docker run -i \
+  -e DATABASE_URL="postgresql://user:pass@host.docker.internal:5432/db" \
+  blankbrackets/postgres-mcp-server:latest
+```
+
+**Supported platforms**: linux/amd64, linux/arm64
+
+See [`docs/DOCKER.md`](docs/DOCKER.md) for comprehensive Docker documentation.
+
+## Registry Submission
+
+This server is ready for submission to:
+
+- **Smithery MCP Registry** (smithery.ai) - Official MCP catalog
+- **NPM Registry** (npmjs.com) - For easy installation
+- **Docker Hub** (hub.docker.com) - For containerized deployment
+
+See [`docs/REGISTRY_SUBMISSION.md`](docs/REGISTRY_SUBMISSION.md) for submission instructions.
+
 ## Contributing
 
 Contributions are welcome! Please see [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for guidelines.
@@ -337,6 +481,8 @@ Contributions are welcome! Please see [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING
 - Better error messages
 - Documentation improvements
 - Bug fixes
+- Translations
+- Integration examples
 
 ## License
 
@@ -344,7 +490,8 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-org/postgres-mcp/issues)
+- **Issues**: [GitHub Issues](https://github.com/blankbrackets/postgres-mcp/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/blankbrackets/postgres-mcp/discussions)
 - **Logs**: Check `logs/postgres-mcp-server.log` for debugging
 - **Documentation**: See [`docs/`](docs/) folder
 
@@ -354,12 +501,14 @@ Built with:
 - [Model Context Protocol](https://modelcontextprotocol.io) by Anthropic
 - [PostgreSQL](https://www.postgresql.org/)
 - [Node.js](https://nodejs.org/) and [TypeScript](https://www.typescriptlang.org/)
+- [Winston](https://github.com/winstonjs/winston) for logging
 
 ## Related Projects
 
 - [MCP Specification](https://spec.modelcontextprotocol.io/)
 - [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk)
 - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+- [Postgres MCP Pro](https://github.com/crystaldba/postgres-mcp) - Python-based alternative
 
 ---
 
