@@ -1,0 +1,38 @@
+{
+  "name": "postgres-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for read-only Postgres database analysis and optimization suggestions",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsx src/index.ts",
+    "clean": "rm -rf build"
+  },
+  "keywords": [
+    "mcp",
+    "postgres",
+    "database",
+    "analysis",
+    "optimization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "pg": "^8.13.1",
+    "dotenv": "^16.4.5",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.2",
+    "tsx": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
