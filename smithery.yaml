@@ -1,19 +1,11 @@
 # Smithery MCP Registry Configuration
 # https://smithery.ai
 
-runtime: container
-
 description: Read-only PostgreSQL database analysis and optimization server for AI assistants. Provides comprehensive performance analysis, index optimization, and schema recommendations.
 
-startCommand:
-  dockerfile: |
-    FROM node:20-alpine
-    RUN npm install -g blankbrackets-postgres-mcp-server@1.0.1
-    ENTRYPOINT ["blankbrackets-postgres-mcp-server"]
-
-# Environment variables as simple strings
-env:
-  DATABASE_URL: "PostgreSQL connection string (e.g., postgresql://user:password@host:port/database)"
-  LOG_LEVEL: "Logging level: error, warn, info, or debug (optional, default: info)"
-  QUERY_TIMEOUT: "Query timeout in milliseconds (optional, default: 30000)"
+# Use NPM package directly
+commands:
+  - npx
+  - -y
+  - blankbrackets-postgres-mcp-server@1.0.1
 
